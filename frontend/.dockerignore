@@ -1,0 +1,9 @@
+node_modules/
+.env
+
+!yarn/
+!public/
+!src/
+!package.json
+!yarn.lock
+!.yarnrc

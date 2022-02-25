@@ -4,12 +4,13 @@
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
 # Node artifact files
-node_modules/
-dist/
+**/node_modules/
+**/dist/
 
 # dotenv environment variables file
-.env
-.env*
+**/.env
+**/.env*
+**/!.env.sample
 
 # Compiled Java class files
 *.class
@@ -65,6 +66,9 @@ Thumbs.db
 # Optional npm cache directory
 .npm
 
+# Optional yarn cache directory
+.yarn
+
 # Optional esline cache
 .eslintcache
 
@@ -84,7 +88,7 @@ docs/*
 !docs/.gitkeep
 
 # Babel build
-build/*
+**/build/*
 
 src/constants/distanceData/*
 !src/constants/distanceData/.gitkeep

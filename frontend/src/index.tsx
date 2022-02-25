@@ -7,7 +7,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_BASE_URL,
+  uri: process.env.REACT_APP_PROXY,
   cache: new InMemoryCache(),
   credentials: 'include',
 });
