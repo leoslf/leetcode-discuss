@@ -1,4 +1,6 @@
 import React, { useMemo } from 'react';
+import { formatISO, fromUnixTime } from 'date-fns';
+
 import { useDiscussions } from '../gql/hooks/useDiscussions';
 import { DiscussionsResult, Discussion } from '../gql/types/Discussions';
 import Table from './TableContainer';
@@ -36,6 +38,7 @@ export const DiscussionList : React.FC<DiscussionListProps> = ({
         {
           Header: 'Created At',
           accessor: 'post.creationDate',
+          Cell: ({ value }: any) => formatISO(fromUnixTime(value)),
         },
         {
           Header: 'Vote Count',
