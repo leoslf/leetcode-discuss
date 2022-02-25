@@ -5,11 +5,13 @@ import Table from './TableContainer';
 
 interface DiscussionListProps {
   username: string;
+  limit?: number;
   tableProps?: any;
 }
 
 export const DiscussionList : React.FC<DiscussionListProps> = ({
   username,
+  limit,
   tableProps,
 }) => {
   const columns = useMemo(() => [
@@ -43,6 +45,7 @@ export const DiscussionList : React.FC<DiscussionListProps> = ({
 
   const { userRecentTopics, error, loading } = useDiscussions({
     username,
+    limit,
   });
 
   if (loading) {
