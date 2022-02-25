@@ -11,12 +11,12 @@ function App() {
       username: 'Leoslf',
       limit: 100
     },
-    context: {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        cookie: process.env.REACT_APP_COOKIE,
-      },
-    }
+    // context: {
+    //   headers: {
+    //     // 'Access-Control-Allow-Origin': '*',
+    //     // cookie: process.env.REACT_APP_COOKIE,
+    //   },
+    // }
   });
 
   if (loading) {

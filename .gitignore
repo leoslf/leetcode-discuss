@@ -10,7 +10,7 @@
 # dotenv environment variables file
 **/.env
 **/.env*
-**/!.env.sample
+!**/.env.sample
 
 # Compiled Java class files
 *.class

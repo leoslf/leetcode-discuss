@@ -7,9 +7,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const client = new ApolloClient({
-  uri: process.env.REACT_APP_PROXY,
+  uri: `${process.env.REACT_APP_PROXY}/graphql`,
   cache: new InMemoryCache(),
-  credentials: 'include',
+  // credentials: 'include',
 });
 
 ReactDOM.render(
