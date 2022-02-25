@@ -17,7 +17,6 @@ export const DiscussionList : React.FC<DiscussionListProps> = ({
   const columns = useMemo(() => [
     {
       Header: 'Discussions',
-      Cell: ({ cell: { value }}: any) => (<td> {value ?? '-'}</td>),
       columns: [
         {
           Header: 'id',
@@ -26,6 +25,9 @@ export const DiscussionList : React.FC<DiscussionListProps> = ({
         {
           Header: 'title',
           accessor: 'title',
+          Cell: ({ row, value }: any) => (
+            <a href={`${process.env.REACT_APP_BASE_URL}/discuss/topic/${row.values.id}`}>{value}</a>
+          ),
         },
         {
           Header: 'Comment Count',
@@ -33,7 +35,7 @@ export const DiscussionList : React.FC<DiscussionListProps> = ({
         },
         {
           Header: 'Created At',
-          accessor: 'post.createDate',
+          accessor: 'post.creationDate',
         },
         {
           Header: 'Vote Count',

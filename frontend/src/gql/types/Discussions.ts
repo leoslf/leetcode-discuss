@@ -1,7 +1,7 @@
 import { QueryResult } from '@apollo/client';
 
 export interface Post {
-  createDate: Date;
+  creationDate: number;
   voteCount: number;
 }
 
