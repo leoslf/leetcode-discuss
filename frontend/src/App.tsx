@@ -1,51 +1,52 @@
-import React from 'react';
-import { gql, useQuery } from '@apollo/client';
+import React, { useState } from 'react';
+import {
+  Container,
+  Form,
+  Row,
+  Col,
+} from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { useDebounce } from './hooks';
+import { DiscussionList } from './containers/DiscussionList';
 
 import logo from './logo.svg';
 import './App.css';
-import { QUERY_DISCUSSION_LIST } from './components/DiscussionList';
 
 function App() {
-  const { data, error, loading } = useQuery(QUERY_DISCUSSION_LIST, {
-    variables: {
-      username: 'Leoslf',
-      limit: 100
-    },
-    // context: {
-    //   headers: {
-    //     // 'Access-Control-Allow-Origin': '*',
-    //     // cookie: process.env.REACT_APP_COOKIE,
-    //   },
-    // }
-  });
+  const [username, setUsername] = useState<string>('');
+  const usernameDebounced = useDebounce(username, 1000);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>{`Error! ${error}`}</div>;
-  }
-
-  console.log(data);
+  const handleChange = (e: any) => {
+    e.preventDefault();
+    setUsername(e.target.value);
+  };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className='App'>
+      <Form>
+        <Form.Group as={Row} className='mb-3'>
+          <Form.Label column sm={6}>Username</Form.Label>
+          <Col sm={6}>
+            <Form.Control type='text' value={username} onChange={handleChange} />
+          </Col>
+        </Form.Group>
+      </Form>
+      <Row>
+        <Col sm={12}>
+          {(username?.length ?? 0) > 0 && (
+            <DiscussionList
+              username={usernameDebounced!}
+              tableProps={{
+                striped: true,
+                boardered: true,
+                hover: true,
+              }}
+            />
+          )}
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

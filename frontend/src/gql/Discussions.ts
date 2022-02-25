@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_DISCUSSION_LIST = gql`
+export const QUERY_DISCUSSIONS = gql`
   query getRecentPosts($username: String!, $limit: Int) {
     userRecentTopics(username: $username, limit: $limit) {
       id
@@ -9,9 +9,7 @@ export const QUERY_DISCUSSION_LIST = gql`
       post {
         creationDate
         voteCount
-        __typename
       }
-      __typename
     }
   }
 `;
